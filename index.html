@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Rental Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #444;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .equipment-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .equipment-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        .equipment-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .equipment-details {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-control input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        .quantity-control button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .quantity-control button:hover {
+            background: #45a049;
+        }
+        .order-summary {
+            background: #e9f7ef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        #summary-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Equipment Rental Order Form</h1>
+        
+        <form id="rentalForm">
+            <div class="form-group">
+                <label for="customerName">Name:</label>
+                <input type="text" id="customerName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customerEmail">Email:</label>
+                <input type="email" id="customerEmail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customerPhone">Phone:</label>
+                <input type="tel" id="customerPhone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventDetails">Event Details:</label>
+                <textarea id="eventDetails" rows="3"></textarea>
+            </div>
+            
+            <h2>1. Speaker Systems</h2>
+            <div class="category" id="speakers">
+                <h3>Active Speakers</h3>
+                <div class="equipment-list">
+                    <!-- Active speakers will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Passive Systems</h3>
+                <div class="equipment-list">
+                    <!-- Passive systems will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Mixers</h3>
+                <div class="equipment-list">
+                    <!-- Mixers will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <h2>2. Lighting Equipment</h2>
+            <div class="category" id="lighting">
+                <div class="equipment-list">
+                    <!-- Lighting equipment will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Lighting Controllers</h3>
+                <div class="equipment-list">
+                    <!-- Lighting controllers will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <h2>3. DJ Equipment</h2>
+            <div class="category" id="dj">
+                <h3>Players</h3>
+                <div class="equipment-list">
+                    <!-- DJ players will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Mixers</h3>
+                <div class="equipment-list">
+                    <!-- DJ mixers will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Samplers & Turntables</h3>
+                <div class="equipment-list">
+                    <!-- Samplers & turntables will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <h2>4. Microphones & IEM</h2>
+            <div class="category" id="microphones">
+                <div class="equipment-list">
+                    <!-- Microphones will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <h2>5. Accessories</h2>
+            <div class="category" id="accessories">
+                <h3>Balloons</h3>
+                <div class="equipment-list">
+                    <!-- Balloons will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Fog & Effects</h3>
+                <div class="equipment-list">
+                    <!-- Fog & effects will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>DJ Tables</h3>
+                <div class="equipment-list">
+                    <!-- DJ tables will be inserted here by JavaScript -->
+                </div>
+                
+                <h3>Screens</h3>
+                <div class="equipment-list">
+                    <!-- Screens will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="summary-items">
+                    <!-- Selected items will appear here -->
+                    <p>No items selected yet.</p>
+                </div>
+                <div id="total-items">Total Items: 0</div>
+                <button type="submit" id="submitOrder">Submit Order</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Equipment data
+        const equipmentData = {
+            speakers: {
+                active: [
+                    { id: "IN0085", name: "M12", details: "", stock: 2 },
+                    { id: "LD-Icoa-15", name: "LD Icoa 15", details: "", stock: 8 },
+                    { id: "IN0094", name: "LD Icoa 12", details: "", stock: 4 },
+                    { id: "IN0095", name: "LD ICOA 18 Sub", details: "", stock: 4 },
+                    { id: "IN0096", name: "LD ICOA 15 Sub", details: "", stock: 2 },
+                    { id: "IN0097", name: "DRM Mackie Top", details: "", stock: 2 },
+                    { id: "IN0098", name: "DRM Mackie Sub", details: "", stock: 2 },
+                    { id: "IN0099", name: "Audio Center SA312", details: "", stock: 2 },
+                    { id: "IN0114", name: "LD Maui", details: "", stock: 2 },
+                    { id: "IN0123", name: "FBT Ventis 110A", details: "", stock: 1 },
+                    { id: "IN0132", name: "X10 Top", details: "", stock: 8 },
+                    { id: "IN0133", name: "X10 Sub", details: "", stock: 8 },
+                    { id: "IN0232", name: "M1 Monitor", details: "", stock: 2 }
+                ],
+                passive: [
+                    { id: "IN0100", name: "Void Venue 210i Top", details: "", stock: 2 },
+                    { id: "IN0101", name: "Void Venue 210i Sub", details: "", stock: 1 },
+                    { id: "IN0102", name: "CELTO CSW 218", details: "", stock: 4 },
+                    { id: "IN0103", name: "CELTO FT 15", details: "", stock: 4 },
+                    { id: "IN0105", name: "AD Sub 18A", details: "", stock: 2 },
+                    { id: "IN0107", name: "G-Acoustic BR 115", details: "", stock: 2 },
+                    { id: "IN0110", name: "K12", details: "", stock: 2 },
+                    { id: "IN0108", name: "Vela Top", details: "", stock: 16 },
+                    { id: "IN0109", name: "Vela Bumper", details: "", stock: 4 }
+                ],
+                mixers: [
+                    { id: "Yamaha-Mixer", name: "Yamaha Mixer", details: "", stock: 1 },
+                    { id: "Mixer-SQ6", name: "Mixer SQ6", details: "", stock: 1 },
+                    { id: "AD-Live-20", name: "AD Live 20 Pro", details: "Digital Mixer", stock: 1 }
+                ]
+            },
+            lighting: {
+                equipment: [
+                    { id: "IN0033", name: "Mini-B", details: "", stock: 24 },
+                    { id: "IN0187", name: "XMLite Beam 260", details: "", stock: 8 },
+                    { id: "IN0197", name: "Bat-4", details: "", stock: 36 },
+                    { id: "IN0199", name: "Avolites Quartz", details: "", stock: 2 },
+                    { id: "IN0195", name: "Laser 3 Watt", details: "", stock: 4 },
+                    { id: "IN0196", name: "Laser 5 Watt Old", details: "", stock: 1 },
+                    { id: "IN0206", name: "Watter Effect", details: "", stock: 8 },
+                    { id: "IN0207", name: "Chauvet 4Bar", details: "", stock: 2 },
+                    { id: "IN0208", name: "Chauvet Gigabar", details: "", stock: 2 },
+                    { id: "IN0209", name: "Corner LED Stick", details: "", stock: 3 },
+                    { id: "IN0426", name: "Laser 5W", details: "Laser Alignment fail", stock: 2 },
+                    { id: "IN0476", name: "Dj Light", details: "for dj table Q-Lite", stock: 2 },
+                    { id: "IN0424", name: "EZLink Par Q6 BT", details: "Chauvet", stock: 5 },
+                    { id: "IN0034", name: "Nano", details: "", stock: 16 },
+                    { id: "IN0035", name: "Laser 5 Watt", details: "", stock: 8 },
+                    { id: "IN0425", name: "Abyss USB", details: "Chauvet", stock: 2 }
+                ],
+                controllers: [
+                    { id: "IN0039", name: "Avolite Sapphire", details: "Touch Plus", stock: 1 },
+                    { id: "IN0040", name: "MA 2.5", details: "", stock: 1 },
+                    { id: "IN0262", name: "Wolfmix", details: "", stock: 1 },
+                    { id: "IN0202", name: "Avolites Arena", details: "", stock: 1 },
+                    { id: "IN0203", name: "Avolite Titan Prozessor", details: "", stock: 1 }
+                ]
+            },
+            dj: {
+                players: [
+                    { id: "IN0235", name: "Denon SC5000", details: "Player", stock: 2 },
+                    { id: "IN0252", name: "Pioneer CDJ2000nxs", details: "Player", stock: 2 },
+                    { id: "IN0237", name: "Pioneer RX3", details: "", stock: 1 }
+                ],
+                mixers: [
+                    { id: "IN0236", name: "Denon X1800", details: "Mixer", stock: 1 },
+                    { id: "IN0240", name: "Pioneer DJM V10", details: "Mixer", stock: 2 },
+                    { id: "IN0242", name: "XONE", details: "Mixer", stock: 1 },
+                    { id: "IN0254", name: "Pioneer DJM S11", details: "Mixer", stock: 1 },
+                    { id: "IN0247", name: "Pioneer DJM 900NXS", details: "Mixer", stock: 1 }
+                ],
+                samplers: [
+                    { id: "IN0256", name: "Technics SL 1220", details: "Turntable", stock: 2 },
+                    { id: "IN0257", name: "Technics SL 1220", details: "Limited Edition", stock: 2 },
+                    { id: "IN0245", name: "Pioneer DJS 1000", details: "Sampler", stock: 1 }
+                ]
+            },
+            microphones: [
+                { id: "IN0079", name: "Headset Phaselab", details: "", stock: 4 },
+                { id: "IN0080", name: "IEM Headset", details: "", stock: 8 },
+                { id: "IN0081", name: "Handheld Mic", details: "MIC Set", stock: 8 },
+                { id: "IN0082", name: "Bodypack", details: "MIC Set", stock: 8 },
+                { id: "IN0083", name: "Lavelier Mic", details: "MIC Set", stock: 8 },
+                { id: "IN0084", name: "Headset Mic", details: "MIC Set", stock: 8 },
+                { id: "IN0250", name: "AKAI APC 40 mk2", details: "MIDI", stock: 1 },
+                { id: "IN0259", name: "Pioneer RMX 1000", details: "Effect", stock: 1 },
+                { id: "IN0292", name: "Drumset Mic AKG", details: "", stock: 2 },
+                { id: "IN0294", name: "Phaselab Ultimate Microphone", details: "4 mics", stock: 2 },
+                { id: "IN0320", name: "Shure Mix 58", details: "", stock: 6 },
+                { id: "IN0321", name: "Shure Mic 57", details: "", stock: 1 }
+            ],
+            accessories: {
+                balloons: [
+                    { id: "IN0181", name: "Ballon", details: "60cm", stock: 9 },
+                    { id: "IN0182", name: "Ballon", details: "90cm", stock: 9 },
+                    { id: "IN0183", name: "Ballon", details: "1.2m", stock: 3 },
+                    { id: "IN0184", name: "Ballon", details: "1.5m", stock: 5 },
+                    { id: "IN0185", name: "Ballon", details: "2m", stock: 3 },
+                    { id: "IN0186", name: "Ballon", details: "3m", stock: 2 }
+                ],
+                fog: [
+                    { id: "IN0204", name: "Thanos", details: "", stock: 2 },
+                    { id: "IN0225", name: "Fazer Liquid", details: "", stock: 22 },
+                    { id: "IN0226", name: "Hazer Liquid", details: "", stock: 45 },
+                    { id: "IN0227", name: "Pro-PW Bubble", details: "", stock: 40 },
+                    { id: "IN0228", name: "Pro-V Fog", details: "", stock: 34 },
+                    { id: "IN0377", name: "DJP WP-2", details: "Bubble Fog", stock: 2 },
+                    { id: "IN0378", name: "DJP DSK-1600", details: "Swing Fog", stock: 8 },
+                    { id: "IN0477", name: "Fog Machine", details: "FY-1500", stock: 1 }
+                ],
+                tables: [
+                    { id: "IN0112", name: "Modular DJ Table", details: "2pcs", stock: 1 },
+                    { id: "IN0200", name: "Simple Table", details: "small", stock: 2 },
+                    { id: "IN0201", name: "Simple Table", details: "large", stock: 1 },
+                    { id: "IN0229", name: "Big DJ Table", details: "", stock: 1 },
+                    { id: "IN0010", name: "DJ-Table", details: "with Screen", stock: 3 }
+                ],
+                screens: [
+                    { id: "IN0011", name: "Screen", details: "for Table", stock: 1 },
+                    { id: "IN0070", name: "LED-Screen", details: "White Frame", stock: 3 },
+                    { id: "IN0071", name: "P5-LED Screen", details: "Black", stock: 7 },
+                    { id: "IN0238", name: "LED Panel", details: "", stock: 24 }
+                ]
+            }
+        };
+
+        // Selected items
+        let selectedItems = [];
+
+        // Render equipment lists
+        function renderEquipmentLists() {
+            // Speakers
+            renderEquipmentCategory('speakers-active', equipmentData.speakers.active);
+            renderEquipmentCategory('speakers-passive', equipmentData.speakers.passive);
+            renderEquipmentCategory('speakers-mixers', equipmentData.speakers.mixers);
+            
+            // Lighting
+            renderEquipmentCategory('lighting-equipment', equipmentData.lighting.equipment);
+            renderEquipmentCategory('lighting-controllers', equipmentData.lighting.controllers);
+            
+            // DJ
+            renderEquipmentCategory('dj-players', equipmentData.dj.players);
+            renderEquipmentCategory('dj-mixers', equipmentData.dj.mixers);
+            renderEquipmentCategory('dj-samplers', equipmentData.dj.samplers);
+            
+            // Microphones
+            renderEquipmentCategory('microphones', equipmentData.microphones);
+            
+            // Accessories
+            renderEquipmentCategory('accessories-balloons', equipmentData.accessories.balloons);
+            renderEquipmentCategory('accessories-fog', equipmentData.accessories.fog);
+            renderEquipmentCategory('accessories-tables', equipmentData.accessories.tables);
+            renderEquipmentCategory('accessories-screens', equipmentData.accessories.screens);
+        }
+
+        function renderEquipmentCategory(containerId, items) {
+            const container = document.createElement('div');
+            container.className = 'equipment-list';
+            
+            items.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'equipment-item';
+                itemElement.innerHTML = `
+                    <div class="equipment-name">${item.name}</div>
+                    <div class="equipment-details">${item.details} (Stock: ${item.stock})</div>
+                    <div class="quantity-control">
+                        <button class="decrease" data-id="${item.id}">-</button>
+                        <input type="number" min="0" max="${item.stock}" value="0" data-id="${item.id}">
+                        <button class="increase" data-id="${item.id}">+</button>
+                    </div>
+                `;
+                container.appendChild(itemElement);
+            });
+            
+            document.getElementById(containerId.replace('-', '-').replace('-', '-')).appendChild(container);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create containers for each category
+            createContainers();
+            
+            // Render equipment lists
+            renderEquipmentLists();
+            
+            // Add event listeners for quantity controls
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('increase')) {
+                    const input = e.target.parentElement.querySelector('input');
+                    if (parseInt(input.value) < parseInt(input.max)) {
+                        input.value = parseInt(input.value) + 1;
+                        updateSelectedItems(input.dataset.id, input.value);
+                    }
+                } else if (e.target.classList.contains('decrease')) {
+                    const input = e.target.parentElement.querySelector('input');
+                    if (parseInt(input.value) > 0) {
+                        input.value = parseInt(input.value) - 1;
+                        updateSelectedItems(input.dataset.id, input.value);
+                    }
+                }
+            });
+            
+            // Add input change listeners
+            document.addEventListener('change', function(e) {
+                if (e.target.tagName === 'INPUT' && e.target.type === 'number') {
+                    updateSelectedItems(e.target.dataset.id, e.target.value);
+                }
+            });
+            
+            // Form submission
+            document.getElementById('rentalForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (selectedItems.length === 0) {
+                    alert('Please select at least one item before submitting.');
+                    return;
+                }
+                
+                // Here you would typically send the data to a server
+                alert('Order submitted successfully! We will contact you shortly to confirm details.');
+                
+                // For demo purposes, just log the data
+                const formData = {
+                    customer: {
+                        name: document.getElementById('customerName').value,
+                        email: document.getElementById('customerEmail').value,
+                        phone: document.getElementById('customerPhone').value,
+                        eventDate: document.getElementById('eventDate').value,
+                        eventDetails: document.getElementById('eventDetails').value
+                    },
+                    items: selectedItems
+                };
+                console.log('Form data:', formData);
+            });
+        });
+
+        function createContainers() {
+            // Speakers
+            const speakersActive = document.createElement('div');
+            speakersActive.id = 'speakers-active';
+            document.querySelector('#speakers h3').after(speakersActive);
+            
+            const speakersPassive = document.createElement('div');
+            speakersPassive.id = 'speakers-passive';
+            document.querySelectorAll('#speakers h3')[1].after(speakersPassive);
+            
+            const speakersMixers = document.createElement('div');
+            speakersMixers.id = 'speakers-mixers';
+            document.querySelectorAll('#speakers h3')[2].after(speakersMixers);
+            
+            // Lighting
+            const lightingEquipment = document.createElement('div');
+            lightingEquipment.id = 'lighting-equipment';
+            document.querySelector('#lighting').appendChild(lightingEquipment);
+            
+            const lightingControllers = document.createElement('div');
+            lightingControllers.id = 'lighting-controllers';
+            document.querySelector('#lighting h3').after(lightingControllers);
+            
+            // DJ
+            const djPlayers = document.createElement('div');
+            djPlayers.id = 'dj-players';
+            document.querySelectorAll('#dj h3')[0].after(djPlayers);
+            
+            const djMixers = document.createElement('div');
+            djMixers.id = 'dj-mixers';
+            document.querySelectorAll('#dj h3')[1].after(djMixers);
+            
+            const djSamplers = document.createElement('div');
+            djSamplers.id = 'dj-samplers';
+            document.querySelectorAll('#dj h3')[2].after(djSamplers);
+            
+            // Microphones
+            const microphones = document.createElement('div');
+            microphones.id = 'microphones';
+            document.querySelector('#microphones').appendChild(microphones);
+            
+            // Accessories
+            const accessoriesBalloons = document.createElement('div');
+            accessoriesBalloons.id = 'accessories-balloons';
+            document.querySelectorAll('#accessories h3')[0].after(accessoriesBalloons);
+            
+            const accessoriesFog = document.createElement('div');
+            accessoriesFog.id = 'accessories-fog';
+            document.querySelectorAll('#accessories h3')[1].after(accessoriesFog);
+            
+            const accessoriesTables = document.createElement('div');
+            accessoriesTables.id = 'accessories-tables';
+            document.querySelectorAll('#accessories h3')[2].after(accessoriesTables);
+            
+            const accessoriesScreens = document.createElement('div');
+            accessoriesScreens.id = 'accessories-screens';
+            document.querySelectorAll('#accessories h3')[3].after(accessoriesScreens);
+        }
+
+        function updateSelectedItems(itemId, quantity) {
+            quantity = parseInt(quantity);
+            
+            // Remove item if quantity is 0
+            if (quantity === 0) {
+                selectedItems = selectedItems.filter(item => item.id !== itemId);
+            } else {
+                // Find the equipment in our data
+                let equipment = null;
+                
+                // Search through all categories to find the item
+                for (const category in equipmentData) {
+                    if (category === 'speakers' || category === 'lighting' || category === 'accessories') {
+                        for (const subCategory in equipmentData[category]) {
+                            const found = equipmentData[category][subCategory].find(item => item.id === itemId);
+                            if (found) {
+                                equipment = found;
+                                break;
+                            }
+                        }
+                    } else if (Array.isArray(equipmentData[category])) {
+                        const found = equipmentData[category].find(item => item.id === itemId);
+                        if (found) {
+                            equipment = found;
+                            break;
+                        }
+                    }
+                    
+                    if (equipment) break;
+                }
+                
+                if (equipment) {
+                    // Update or add the item
+                    const existingItemIndex = selectedItems.findIndex(item => item.id === itemId);
+                    
+                    if (existingItemIndex >= 0) {
+                        selectedItems[existingItemIndex].quantity = quantity;
+                    } else {
+                        selectedItems.push({
+                            id: itemId,
+                            name: equipment.name,
+                            details: equipment.details,
+                            quantity: quantity
+                        });
+                    }
+                }
+            }
+            
+            updateOrderSummary();
+        }
+
+        function updateOrderSummary() {
+            const summaryContainer = document.getElementById('summary-items');
+            const totalItemsContainer = document.getElementById('total-items');
+            
+            if (selectedItems.length === 0) {
+                summaryContainer.innerHTML = '<p>No items selected yet.</p>';
+                totalItemsContainer.textContent = 'Total Items: 0';
+                return;
+            }
+            
+            summaryContainer.innerHTML = '';
+            
+            let totalItems = 0;
+            
+            selectedItems.forEach(item => {
+                totalItems += item.quantity;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'summary-item';
+                itemElement.innerHTML = `
+                    <span>${item.name} ${item.details ? `(${item.details})` : ''}</span>
+                    <span>${item.quantity}</span>
+                `;
+                summaryContainer.appendChild(itemElement);
+            });
+            
+            totalItemsContainer.textContent = `Total Items: ${totalItems}`;
+        }
+    </script>
+</body>
+</html>
